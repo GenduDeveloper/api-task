@@ -4,23 +4,13 @@ namespace App\DTO\Users;
 
 class UserRegisterDTO
 {
-    private string $firstName;
-
-    private string $lastName;
-
-    private string $email;
-
-    private string $password;
-
-
     public function __construct(
-        string $firstName, string $lastName, string $email, string $password,
+        private readonly string $firstName,
+        private readonly string $lastName,
+        private readonly string $email,
+        private readonly string $password,
     )
     {
-        $this->firstName = $firstName;
-        $this->lastName = $lastName;
-        $this->email = $email;
-        $this->password = $password;
     }
 
     public function getFirstName(): string

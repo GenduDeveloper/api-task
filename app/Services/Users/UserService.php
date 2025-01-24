@@ -44,16 +44,16 @@ class UserService
     {
         $user = $this->userRepository->getById($id);
 
-        if ($dtoData->firstName !== null) {
-            $user->first_name = $dtoData->firstName;
+        if ($dtoData->getFirstName() !== null) {
+            $user->first_name = $dtoData->getFirstName();
         }
 
-        if ($dtoData->lastName !== null) {
-            $user->last_name = $dtoData->lastName;
+        if ($dtoData->getLastName() !== null) {
+            $user->last_name = $dtoData->getLastName();
         }
 
-        if ($dtoData->email !== null) {
-            $user->email = $dtoData->email;
+        if ($dtoData->getEmail() !== null) {
+            $user->email = $dtoData->getEmail();
         }
 
         $user->update();

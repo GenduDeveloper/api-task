@@ -4,12 +4,26 @@ namespace App\DTO\Users;
 
 class UserUpdateDTO
 {
-    // чтобы не писать огромный класс с геттерами, мы можем свойства объявить как readonly и сделать их публичными
     public function __construct(
-        public readonly ?string $firstName,
-        public readonly ?string $lastName,
-        public readonly ?string $email,
+        private readonly ?string $firstName,
+        private readonly ?string $lastName,
+        private readonly ?string $email,
     )
     {
+    }
+
+    public function getFirstName(): ?string
+    {
+        return $this->firstName;
+    }
+
+    public function getLastName(): ?string
+    {
+        return $this->lastName;
+    }
+
+    public function getEmail(): ?string
+    {
+        return $this->email;
     }
 }
