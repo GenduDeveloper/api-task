@@ -10,6 +10,9 @@ class Role extends Model
 {
     use HasFactory;
 
+    const USER_ROLE_ID = 1;
+    const ADMIN_ROLE_ID = 2;
+
     protected $table = 'roles';
 
     protected $fillable = [
@@ -20,4 +23,5 @@ class Role extends Model
     {
         return $this->hasMany(User::class, 'role_id');
     }
+
 }
