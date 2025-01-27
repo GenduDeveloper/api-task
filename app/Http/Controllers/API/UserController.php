@@ -2,10 +2,8 @@
 
 namespace App\Http\Controllers\API;
 
-use App\Exceptions\RegisterErrorException;
 use App\Exceptions\UserNotFoundException;
 use App\Http\Controllers\Controller;
-use App\Http\Requests\Users\RegisterUserRequest;
 use App\Http\Requests\Users\UpdateUserRequest;
 use App\Http\Resources\Users\UserResource;
 use App\Repositories\UserRepository;
@@ -53,21 +51,6 @@ class UserController extends Controller
             'message' => 'Успешно обновлено',
             'user' => new UserResource($updatedUser)
         ]);
-    }
-
-    /**
-     * @throws RegisterErrorException
-     */
-    public function register(RegisterUserRequest $request, UserService $userService): JsonResponse
-    {
-        $validatedData = $request->getDTO();
-
-        $createdUser = $userService->registerUser($validatedData);
-
-        return response()->json([
-            'message' => 'Пользователь был успешно создан',
-            'user' => new UserResource($createdUser)
-        ], 201);
     }
 
     /**

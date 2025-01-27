@@ -2,6 +2,7 @@
 
 namespace App\Exceptions;
 
+use Illuminate\Auth\AuthenticationException;
 use Illuminate\Database\Eloquent\ModelNotFoundException;
 use Illuminate\Foundation\Exceptions\Handler as ExceptionHandler;
 use Throwable;
@@ -22,7 +23,7 @@ class Handler extends ExceptionHandler
 
             $this->renderable(function (UserNotFoundException|ModelNotFoundException $e) {
                 return response()->json([
-                   'error' => $e->getMessage()
+                    'error' => $e->getMessage()
                 ], 404);
             });
 
@@ -30,6 +31,12 @@ class Handler extends ExceptionHandler
                 return response()->json([
                     'error' => $e->getMessage()
                 ], 500);
+            });
+
+            $this->renderable(function (AuthenticationException $e) {
+                return response()->json([
+                    'error' => $e->getMessage()
+                ], 422);
             });
 
         });

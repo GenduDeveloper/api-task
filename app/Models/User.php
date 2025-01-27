@@ -41,4 +41,14 @@ class User extends Authenticatable
     {
         return $this->first_name . ' ' . $this->last_name;
     }
+
+    public function isUser(): bool
+    {
+        return $this->role_id === Role::USER_ROLE_ID;
+    }
+
+    public function isAdmin(): bool
+    {
+        return $this->role_id === Role::ADMIN_ROLE_ID;
+    }
 }

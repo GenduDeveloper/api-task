@@ -11,7 +11,7 @@ class RoleService
     {
         $role = new Role();
 
-        $role->role = $dtoData->role;
+        $role->role = $dtoData->getRole();
         $role->save();
 
         return $role;

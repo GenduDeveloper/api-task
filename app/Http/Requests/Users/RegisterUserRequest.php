@@ -17,7 +17,7 @@ class RegisterUserRequest extends FormRequest
             'password' => ['required', 'string',
                 Password::min(8)
                     ->letters()
-                    ->letters()
+                    ->numbers()
             ],
             'password_repeat' => ['required', 'string', 'min:8', 'same:password']
         ];

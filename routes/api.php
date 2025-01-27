@@ -3,17 +3,28 @@
 use Illuminate\Support\Facades\Route;
 use App\Http\Controllers\API\UserController;
 use App\Http\Controllers\API\RoleController;
+use App\Http\Controllers\API\Auth\AuthController;
 
-// Я знаю, что есть apiResource, но таким образом я перестаю владеть кодом получая сразу "магически" модель User
-Route::controller(UserController::class)->group(function () {
-    Route::get('/users', 'index')->name('users.index');
-    Route::get('/users/{id}', 'show')->name('users.show');
-    Route::patch('/users/{id}', 'update')->name('users.update');
-    Route::post('/users', 'register')->name('users.register');
-    Route::delete('/users/{id}', 'destroy')->name('users.destroy');
+Route::controller(AuthController::class)->group(function () {
+    Route::post('/register', 'register')->name('auth.register');
+    Route::post('/login', 'login')->name('auth.login');
 });
 
-Route::controller(RoleController::class)->group(function () {
-    Route::get('/roles', 'index')->name('roles.index');
-    Route::post('/roles', 'create')->name('roles.create');
-});
+Route::middleware(['auth:sanctum'])
+    ->group(function () {
+        Route::post('/logout', [AuthController::class, 'logout'])->name('auth.logout');
+
+        Route::get('/users', [UserController::class, 'index'])->name('users.index');
+        Route::get('/users/{id}', [UserController::class, 'show'])->name('users.show');
+        Route::patch('/users/{id}', [UserController::class, 'update'])->name('users.update');
+        Route::delete('/users/{id}', [UserController::class, 'destroy'])->name('users.destroy');
+    });
+
+
+Route::middleware(['auth:sanctum', 'auth.admin'])
+    ->controller(RoleController::class)
+    ->group(function () {
+        Route::get('/roles', 'index')->name('roles.index');
+        Route::post('/roles', 'create')->name('roles.create');
+    });
+
