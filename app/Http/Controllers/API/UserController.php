@@ -63,7 +63,7 @@ class UserController extends Controller
         $user->delete();
 
         return response()->json([
-            'message' => "Пользователь {$user->getFullName()} был успешно удален",
-        ], 204);
+            'message' => "Пользователь был успешно удален",
+        ]);
     }
 }

@@ -20,9 +20,7 @@ Route::middleware(['auth:sanctum'])
         Route::delete('/users/{id}', [UserController::class, 'destroy'])->name('users.destroy');
     });
 
-
-Route::middleware(['auth:sanctum', 'auth.admin'])
-    ->controller(RoleController::class)
+Route::middleware(['auth:sanctum', 'auth.admin'])->controller(RoleController::class)
     ->group(function () {
         Route::get('/roles', 'index')->name('roles.index');
         Route::post('/roles', 'create')->name('roles.create');

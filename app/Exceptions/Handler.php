@@ -19,8 +19,6 @@ class Handler extends ExceptionHandler
     {
         $this->reportable(function (Throwable $e) {
 
-            // $this->reportable()
-
             $this->renderable(function (UserNotFoundException|ModelNotFoundException $e) {
                 return response()->json([
                     'error' => $e->getMessage()
@@ -35,8 +33,8 @@ class Handler extends ExceptionHandler
 
             $this->renderable(function (AuthenticationException $e) {
                 return response()->json([
-                    'error' => $e->getMessage()
-                ], 422);
+                    'message' => $e->getMessage()
+                ], 401);
             });
 
         });

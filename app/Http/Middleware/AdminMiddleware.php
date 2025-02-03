@@ -11,9 +11,15 @@ class AdminMiddleware
 {
     public function handle(Request $request, Closure $next): Response
     {
+        if (!Auth::check()) {
+            return response()->json([
+                'message' => 'Пользователь не аутентифицирован'
+            ], 401);
+        }
+
         if (!Auth::user()->isAdmin()) {
             return response()->json([
-                'message' => 'Доступ запрещен'
+                'message' => 'Нет доступа'
             ], 403);
         }
 
