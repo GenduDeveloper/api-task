@@ -1,6 +1,6 @@
 <?php
 
-namespace App\Services\Users;
+namespace App\Services;
 
 use App\DTO\Users\UserUpdateDTO;
 use App\Exceptions\UserNotFoundException;

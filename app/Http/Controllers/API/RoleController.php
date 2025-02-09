@@ -6,7 +6,7 @@ use App\Http\Controllers\Controller;
 use App\Http\Requests\Roles\CreateRoleRequest;
 use App\Http\Resources\Roles\RoleResource;
 use App\Repositories\RoleRepository;
-use App\Services\Roles\RoleService;
+use App\Services\RoleService;
 use Illuminate\Http\JsonResponse;
 
 class RoleController extends Controller

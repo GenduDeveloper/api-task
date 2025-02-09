@@ -7,7 +7,7 @@ use App\Http\Controllers\Controller;
 use App\Http\Requests\Users\UpdateUserRequest;
 use App\Http\Resources\Users\UserResource;
 use App\Repositories\UserRepository;
-use App\Services\Users\UserService;
+use App\Services\UserService;
 use Illuminate\Http\JsonResponse;
 
 class UserController extends Controller

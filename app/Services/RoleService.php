@@ -1,6 +1,6 @@
 <?php
 
-namespace App\Services\Roles;
+namespace App\Services;
 
 use App\DTO\Roles\RoleCreateDTO;
 use App\Models\Role;
