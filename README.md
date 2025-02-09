@@ -53,6 +53,8 @@
 
 ![passed_test.png](public/postman-images/passed_test.png)
 
+Для того, чтобы создать тестовую базу нужно создать файл `.env.testing` и заполнить ее на примере `.env.example`.
+
 ## Разворачивание проекта
 
 1. Клонируем репозиторий в рабочую директорию: https://github.com/GenduDeveloper/api-task
